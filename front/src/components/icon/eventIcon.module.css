@@ -1,0 +1,15 @@
+:root {
+  --two: #0055C4;
+  --one: #EA0000;
+}
+
+.event{
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: bold;
+    padding: 0 13px;
+    border-radius: 20px;
+    z-index: 1;
+}

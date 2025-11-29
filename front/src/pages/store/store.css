@@ -1,0 +1,58 @@
+.store_cont {
+    position: relative;
+}
+.store_cont .option_cont {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background:#fff;
+    z-index: 11;
+    transition: left 0.5s;
+}
+.store_cont .option_cont.on {
+    left: -400px;
+}
+.store_cont .option_cont .option_box {
+    width: 400px;
+    height: 100%;
+    box-shadow: 4px 8px 7px 0px rgba(0,0,0,0.2);
+    padding: 15px;
+}
+
+.store_cont .option_cont .box_toggle_btn {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: 120px;
+    padding: 0 10px;
+    background:#fff;
+    z-index: 12;
+    box-shadow: 7px 0px 7px 0px rgba(0,0,0,0.2);
+}
+
+.store_cont .chain_list {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.store_cont .chain_list li {
+    width: 100%;
+}
+.store_cont .chain_list li input {
+    display: none;
+}
+.store_cont .chain_list li label {
+    display: block;
+    padding: 8px 20px;
+    font-size: var(--text-size);
+    border: 1px solid #eee;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.store_cont .chain_list li input:checked + label {
+    border-color:#222;
+}

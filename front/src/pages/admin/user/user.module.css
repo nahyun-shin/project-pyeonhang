@@ -1,0 +1,32 @@
+.admin_total{
+    width: 100%;
+    text-align: left;
+}
+.user_info{
+    display: flex;
+    flex-direction: column;
+}
+.userRole, .create_date{
+    color: #7D7D7D;
+}
+.userId{
+    font-size: 20px;
+    display: flex;
+    gap: 10px;
+}
+.deleteAcc{
+    color: #fff;
+    font-size: 14px;
+    padding: 4px 13px;
+    border-radius: 20px;
+    background-color: rgb(197, 37, 37);
+}
+.userName{
+    font-size: 18px;
+}
+
+/* 모달 */
+
+.user_info_form .info{
+    margin-bottom: 20px;
+}

@@ -1,0 +1,39 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.paginationList {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 6px;
+}
+
+.paginationItem {
+  border-radius: 25px;
+}
+
+.paginationItemDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.paginationItemActive {
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: #e9e9e9;
+}
+
+.paginationLink {
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  padding: 12px 20px;
+  color: #000000;
+}
+
+.paginationLink:hover:not(:disabled) {
+  background-color: #e9e9e9;
+}

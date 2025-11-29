@@ -1,0 +1,33 @@
+:global(.table) th {
+    border-bottom: 1px solid var(--main-color);
+    color: var(--main-color);
+    font-weight: 600;
+    padding: 10px;
+    text-align: center;
+}
+:global(.table) td {
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}
+:global(.table) td:global(.title)  {
+    text-align: left;
+}
+
+.table :global(.notice) td{
+    background: #f7f7f7;
+}
+.table :global(.notice .title) {
+    font-weight: bold;
+}
+.table :global(.title.pick):after{
+    content: '채택';
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    padding: 2px 13px;
+    border-radius: 20px;
+    margin-left: 10px;
+    background-color: rgb(8, 116, 26);
+}

@@ -1,0 +1,106 @@
+
+/* 게시판 정보 및 정렬 */
+.brd_info_wrap{
+    display: flex;
+    width: 100%;
+    gap: 5px;
+}
+.brd_list_info{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    line-height: 45px;
+    flex: 1;
+}
+
+.brd_list_info :global(.form-select){
+    width: 130px;
+    height: 38px;
+}
+
+.brd_info_wrap button{
+    width: 80px;
+}
+.brd_info_wrap button:nth-of-type(1){
+    border:1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    height: 38px;
+    line-height: 38px;
+    border-radius: 5px;
+}
+.brd_info_wrap button:nth-of-type(2){
+    border:1px solid rgb(8, 116, 26);
+    color: rgb(8, 116, 26);
+    height: 38px;
+    line-height: 38px;
+    border-radius: 5px;
+}
+.brd_info_wrap button:nth-of-type(3){
+    border:1px solid rgb(161, 16, 16);
+    color: rgb(161, 16, 16);
+    height: 38px;
+    line-height: 38px;
+    border-radius: 5px;
+}
+
+/* 게시판 리스트 */
+.board_list{
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* ------------------------------------------ */
+/* 게시판 상세 */
+.board_title_bg{
+    width: 100%;
+}
+.board_title_bg p:nth-child(2){
+    font-size: 18px;
+}
+.board_title_txt{
+    font-size: var(--title-size);
+    font-weight: bold;
+}
+
+/* 게시판 수정및 등록 */
+.board_title_bg input{
+    height: 60px;
+    width: 100%;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+
+
+/* 게시판 상세 내용 */
+.content_bg{
+    margin: 20px auto 0;
+    width: 100%;
+    padding: 40px 40px 0;
+    border-top: 1px solid #C9C9C9;
+}
+.content_txt{
+    min-height: 300px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+/* 좋아요 버튼 */
+.like_btn{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 0;
+    gap: 7px;
+
+}
+.like_btn img{
+    /* background-color: aqua; */
+    height: 18px;
+    transform: translate(0%, 62%);
+
+}
+
+
+
+

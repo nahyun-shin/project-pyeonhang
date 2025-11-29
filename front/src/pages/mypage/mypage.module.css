@@ -1,0 +1,278 @@
+.my_cont {
+    padding-bottom: 80px;
+}
+.my_cont .page_title {
+    padding: 100px 0 70px;
+    text-align: center;
+    font-weight: bold;
+}
+.my_cont .top_box {
+    display: flex;
+}
+
+.my_cont .top_box .text_box {
+    font-size: 24px;
+    width: 100%;
+    max-width: 300px;
+    padding-top: 10px;
+}
+
+.my_cont .card_box {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 40px;
+    border-bottom: 1px dashed #CECECE;
+}
+.my_cont .card_box li {
+    width: 100%;
+}
+.my_cont .card_box li a {
+    display: block;
+    text-align: center;
+    background: #F7F7F7;
+    border-radius: 10px;
+    padding: 14px 0 11px;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out;
+}
+.card_box li a:hover{
+    background-color: #e4e4e4;
+}
+.my_cont .card_box li p {
+    font-size: 24px;
+    padding-top: 10px;
+}
+
+.my_cont .sub_category_list li a {
+    display: block;
+    padding: 14px 0px 14px 40px;
+    font-size: 20px;
+    border-radius: 0 30px 30px 0;
+}
+.sub_category_list li button {
+    display: block;
+    padding: 14px 0px 14px 40px;
+    font-size: 20px;
+    border-radius: 0 30px 30px 0;
+}
+.my_cont .sub_category_list li a.active {
+    background: var(--secondary-color);
+    font-weight: bold;
+}
+
+
+/* 마이페이지 공통 내용 */
+.right_contents h3 {
+    font-size: 26px;
+    padding: 38px 0;
+}
+.right_contents {
+    padding-left: 90px;
+}
+.right_contents .notice {
+    color: #C80000;
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+
+
+/* 위시 리스트 */
+.wish_cont .item_list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.none_list{
+    font-size: 18px;
+    margin: 50px auto;
+    color: #C9C9C9;
+    /* background-color: #0051FF; */
+}
+
+/* 포인트 내역 */
+.point_cont h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 31px;
+}
+.point_cont .coupon_btn {
+    font-size: 18px;
+    color: #fff;
+    background: var(--main-color);
+    padding: 12px 34px;
+    border-radius: 45px;
+    font-weight: 300;
+}
+.point_cont table {
+    font-size: 16px;
+    width: 100%;
+}
+.point_cont table th {
+    color: var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+    padding: 10px 12px;
+}
+.point_cont td {
+    border-bottom: 1px solid #EEEEEE;
+    padding: 10px 12px;
+}
+.point_cont td.plus {
+    color: #0051FF;
+}
+.point_cont td.minus {
+    color: #EA0000;
+}
+/* 쿠폰 레이어 */
+:global(.modal) {
+    text-align-last: left;
+}
+:global(.modal .modal-body) {
+    padding: 40px;
+}
+:global(.modal) .notice_box {
+    color: #C80000;
+    line-height: auto;
+}
+:global(.modal) .notice_box p {
+    margin: 0;    
+}
+:global(.modal) .coupon_list {
+    padding-top: 10px;
+}
+:global(.modal) .coupon_box {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 20px 0 0;
+}
+:global(.modal) .coupon_box input {
+    flex: 1;
+}
+:global(.modal) .coupon_box label {
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #C9C9C9;
+    height: 90px;
+    border-radius: 10px;
+    font-size: 24px;
+}
+:global(.modal) .coupon_box input:checked + label {
+    border-color: #222;
+}
+
+
+
+
+/* 쿠폰 페이지 */
+.coupon_cont {
+
+}
+.coupon_cont ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+.coupon_cont ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid #C9C9C9;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    text-align: center;
+    height: 100px;
+    cursor: pointer;
+}
+.coupon_cont ul li:hover {
+    border-color: #222;
+}
+.coupon_cont ul li p {
+    font-size: 24px;
+    font-weight: 500;
+    padding-top: 13px;
+}
+
+
+/* 출석 체크 현황 */
+.calendar_cont .calendar {
+    width: 100%;
+    font-size: 16px;
+    padding: 45px;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    font-family: pretendard;
+}
+.calendar_cont .calendar :global(.react-calendar__navigation) {
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+.calendar_cont .calendar :global(.react-calendar__navigation__label) {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 0 20px;
+}
+.calendar_cont .calendar :global(.react-calendar__navigation button) {
+    background: #fff !important;
+    text-align: center;
+}
+.calendar_cont .calendar :global(.react-calendar__navigation button img) {
+    display: inline-block;
+}
+.calendar_cont .calendar :global(.react-calendar__navigation__label) {
+    flex-grow: initial !important;
+}
+.calendar_cont .calendar :global(.react-calendar__month-view__weekdays__weekday) {
+    font-size: 20px;
+}
+.calendar_cont .calendar :global(abbr[title]) {
+    text-decoration: none;
+}
+.calendar_cont .calendar :global(.react-calendar__tile) {
+    font-size: 20px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+}
+.calendar_cont .calendar :global(.react-calendar__tile) {
+    font-size: 20px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    color: inherit !important;
+    background-color: #fff !important;
+}
+.calendar_cont .calendar :global(.react-calendar__month-view__days__day--neighboringMonth) {
+    color: #B5B5B5 !important;
+}
+.calendar_cont .calendar :global(.react-calendar__tile.checked) {
+    background: url(../../assets/img/daliy_check.png) no-repeat 50% 50%;
+}
+.calendar_cont .calendar .checked {
+    background: #C80000;
+}
+
+
+
+/* 내 정보 수정*/
+.form_cont {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+.user-loginp-wrap {
+    margin-top: 0;
+}
+.user-loginp-wrap > * {
+    margin-bottom: 40px;
+}

@@ -1,0 +1,41 @@
+.banner_cont .t_head {
+    font-weight: 500;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 10px 0;
+}
+.banner_cont .t_tr {
+    border-bottom: 1px solid #DDDDDD;
+    padding: 10px 0;
+}
+.banner_cont .t_tr > div {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner_cont .t_tr .input_box {
+    flex-direction: column;
+}
+
+.banner_cont .img_box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 0.5;
+    overflow: hidden;
+    cursor: pointer;
+}
+.banner_cont .img_box img {
+    max-width: 240px;
+}
+.banner_cont .img_box.add_box {
+    background:#f7f7f7;
+}
+.banner_cont .img_box img {
+    height: 100%;
+    object-fit: cover;
+}
+.btn_box button {
+    height: 45px;
+    width: 40%;
+}

@@ -1,0 +1,41 @@
+.prd_item .img_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid #d9d9d9;
+    border-radius: 20px;
+    width: 100%;
+    aspect-ratio: 1 / 1.17;
+    overflow: hidden;
+}
+
+.prd_item .img_box .wish_btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+}
+.prd_item .info_box {
+    margin-top: 15px;
+}
+.prd_img{
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+    z-index: 0;
+} 
+.prd_img:hover{
+    transform: scale(1.2);
+    z-index: 0;
+}
+
+.prd_item .info_box .title {
+    font-size: 16px;
+    padding-bottom: 3px;
+}
+.prd_item .info_box .price {
+    font-size: 20px;
+    font-weight: 800;
+}

@@ -1,0 +1,41 @@
+.my-popup {
+}
+
+.my-title {
+    font-size: 22px;
+    font-weight: bold;    
+}
+
+.my-content {
+    font-size: 16px;
+    margin: 30px 0;
+}
+.my-btn {
+    width: 110px;
+    height: 45px;
+    line-height: 45px;
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+    color: #fff;
+    border-radius: 25px ;
+    padding: 0 20px;
+}
+.my-btn:hover{
+    background-color:#172c3f ;
+    border-color:#172c3f ;
+}
+
+.my-btn-cancel{
+    width: 110px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #fff;
+    border: 1px solid #eeeeee;
+    color: #000000;
+    border-radius: 25px ;
+    padding: 0 20px;
+}
+.my-btn-cancel:hover{
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+}

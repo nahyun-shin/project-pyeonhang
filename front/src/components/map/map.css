@@ -1,0 +1,35 @@
+.info_marker {
+  display: block;
+  padding: 5px 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background: #fff;
+}
+.info_marker p {
+  font-weight: bold;
+}
+.info_marker span {
+  font-size: 12px;
+}
+
+.search_list_cont {
+  overflow-y: scroll;
+  height: calc(100% - 92px);
+  margin: 10px 0 0 0;
+}
+.search_list li {
+  display: flex;
+  gap: 15px;
+  padding: 15px 0 var(--text-size);
+  border-bottom: 1px solid #bcbcbc;
+  font-size: var(--text-size);
+  cursor: pointer;
+}
+.search_list li.active {
+  background: #f7f7f7;
+}
+.search_list li .title {
+  font-size: 20px;
+}
+.search_list li .addr {
+  padding: 12px 0 14px;
+}
