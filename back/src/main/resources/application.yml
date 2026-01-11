@@ -46,9 +46,9 @@ spring:
   #Database 설정
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url : jdbc:mariadb://localhost:3306/cp_db
+    url : jdbc:mariadb://aws-portpolio-db.cpk6yi0usehb.ap-southeast-2.rds.amazonaws.com/portpolio
     username: root
-    password: 1234
+    password: hyun9609
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       connection-timeout: 60000

@@ -3,6 +3,7 @@ package projecct.pyeonhang.crawling.crawler;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -19,9 +20,18 @@ public class GSCrawler {
     private static final String WEB_DRIVER_ID   = "webdriver.chrome.driver";
     private static final String WEB_DRIVER_PATH = "C:/chromedriver-win64/chromedriver.exe";
 
-    private static final String DB_URL      = "jdbc:mariadb://pyeonhang-db.cjg402amekn6.ap-southeast-2.rds.amazonaws.com/pyeonhang?useUnicode=true&characterEncoding=utf8";
-    private static final String DB_USER     = "root";
-    private static final String DB_PASSWORD = "goqlsgoqls1";
+    // private static final String DB_URL      = "jdbc:mariadb://pyeonhang-db.cjg402amekn6.ap-southeast-2.rds.amazonaws.com/pyeonhang?useUnicode=true&characterEncoding=utf8";
+    // private static final String DB_USER     = "root";
+    // private static final String DB_PASSWORD = "goqlsgoqls1";
+
+    @Value("${spring.datasource.url}")
+    private String DB_URL;
+
+    @Value("${spring.datasource.username}")
+    private String DB_USER;
+
+    @Value("${spring.datasource.password}")
+    private String DB_PASSWORD;
 
     // 정규식 패턴
     private static final Pattern NAME_PATTERN  =
@@ -108,7 +118,7 @@ public class GSCrawler {
         options.addArguments("--lang=ko-KR");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
-        // options.addArguments("--headless=new");
+        options.addArguments("--headless=new");
 
         WebDriver driver = new ChromeDriver(options);
 
@@ -163,39 +173,45 @@ public class GSCrawler {
     // 페이지네이션 이동
     // ======================
     private static boolean goToPage(WebDriver driver, int targetPage) throws InterruptedException {
-
-        String currentPageText = null;
-        try {
-            WebElement currentOn = driver.findElement(By.cssSelector(".paging .num a.on"));
-            currentPageText = currentOn.getText().trim();
-        } catch (NoSuchElementException ignore) {}
-
-        if (currentPageText != null && currentPageText.equals(String.valueOf(targetPage))) {
-            System.out.println("이미 페이지 " + targetPage + " 상태");
-            return true;
-        }
-
+        // 1. 현재 화면에 목표 번호가 있는지 확인
         List<WebElement> pageLinks = driver.findElements(By.cssSelector(".paging .num a"));
         for (WebElement link : pageLinks) {
-            String txt = link.getText().trim();
-            if (txt.equals(String.valueOf(targetPage))) {
+            if (link.getText().trim().equals(String.valueOf(targetPage))) {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", link);
                 Thread.sleep(800);
                 return true;
             }
         }
 
-        // targetPage가 현재 블록에 없으면 next(>) 클릭 후 재시도
+        // 2. 목표 번호가 없으면 'Next' 클릭
         try {
+            // [안전장치] 현재 화면의 '마지막 번호'를 기억 (예: 10)
+            String lastNumBefore = pageLinks.isEmpty() ? "" : pageLinks.get(pageLinks.size() - 1).getText().trim();
+            
             WebElement nextBtn = driver.findElement(By.cssSelector(".paging a.next"));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", nextBtn);
-            Thread.sleep(800);
+            System.out.println(">>> " + targetPage + "페이지를 찾기 위해 다음 블록(>) 클릭");
+            
+            // 블록 로딩 대기
+            Thread.sleep(1200);
+
+            // [핵심] Next 클릭 후, 화면의 마지막 번호가 바뀌었는지 확인
+            List<WebElement> pageLinksAfter = driver.findElements(By.cssSelector(".paging .num a"));
+            String lastNumAfter = pageLinksAfter.isEmpty() ? "" : pageLinksAfter.get(pageLinksAfter.size() - 1).getText().trim();
+
+            // 마지막 번호가 이전과 같다면(예: 둘 다 10), 더 이상 다음 블록이 없는 것임
+            if (lastNumBefore.equals(lastNumAfter)) {
+                System.out.println("더 이상 넘어갈 페이지 블록이 없습니다. (마지막 페이지 도달)");
+                return false;
+            }
+
+            // 블록이 바뀌었으므로 다시 목표 페이지 찾기
+            return goToPage(driver, targetPage);
+
         } catch (NoSuchElementException e) {
-            System.out.println("next 버튼 없음 -> targetPage " + targetPage + " 이동 실패");
+            System.out.println("Next 버튼을 찾을 수 없습니다.");
             return false;
         }
-
-        return goToPage(driver, targetPage);
     }
 
     // ======================
