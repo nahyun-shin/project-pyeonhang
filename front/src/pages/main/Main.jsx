@@ -70,9 +70,9 @@ function Main(props) {
     const promoOne = onePlusOne?.items ?? [];
     const promoTwo = twoPlusOne?.items ?? [];
 
-    useEffect(()=>{
-      console.log(popular);
-    },[popular]);
+    // useEffect(()=>{
+    //   console.log(popular);
+    // },[popular]);
 
   // 등록 배너 가져오기
   useEffect(() => {

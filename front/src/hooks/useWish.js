@@ -31,6 +31,7 @@ export const useWish = () => {
 
   // 찜 토글
   const toggleWishMutation = useMutation({
+    //서버 요청
     mutationFn: async (product) => {
       setLoading(true);
       const exists = wishSet.has(product.crawlId);
@@ -38,6 +39,7 @@ export const useWish = () => {
         ? await wishApi.delete(product.crawlId)
         : await wishApi.add(product.crawlId);
     },
+    //서버 요청 전 ui 표시(서버 응답을 기다리지 않고 즉시 반영)
     onMutate: async (product) => {
       await queryClient.cancelQueries(["wish"]);
       const previousWish = queryClient.getQueryData(["wish"]);

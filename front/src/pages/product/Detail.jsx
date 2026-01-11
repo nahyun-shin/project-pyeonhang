@@ -24,6 +24,7 @@ function Detail() {
     const role = authStore().userRole;
     const {productId} = useParams();
     const [mapName, setMapName] = useState('');
+    const [storeList, setStoreList] = useState([]); // 지도 결과를 받을 상태
     const { toggleWishMutation, isWish } = useWish();
     const {addCommentMutation,updateCommentMutation,deleteCommentMutation} = useComment();
     const CHAIN_MAP = {
@@ -131,9 +132,18 @@ function Detail() {
             </div>
 
             <section className={styles.store}>
-                <h3>가까운 편의점 보기</h3>
-                <div id="map">
-                    <Map chainName={mapName} height="400px" showAlert={false}/>
+                <h3>가까운 {prd.sourceChain || "편의점"} 보기</h3>
+                <div id="map" className={styles.map_container}>
+                    {/* mapName이 설정된 후에만 지도를 렌더링하여 엉뚱한 곳 검색 방지 */}
+                    {mapName && (
+                        <Map 
+                            chainName={mapName} 
+                            height="400px" 
+                            showAlert={false}
+                            isDetailPage={true} // 상세 페이지임을 명시
+                            setList={setStoreList} // 검색된 리스트를 받고 싶다면 추가
+                        />
+                    )}
                 </div>
             </section>
             
