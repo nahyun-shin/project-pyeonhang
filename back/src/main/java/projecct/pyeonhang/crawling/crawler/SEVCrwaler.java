@@ -3,6 +3,7 @@ package projecct.pyeonhang.crawling.crawler;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -21,9 +22,18 @@ public class SEVCrwaler {
     private static final String WEB_DRIVER_PATH = "C:/chromedriver-win64/chromedriver.exe";
 
     // 네가 쓰던 cp_db 그대로 둠 (원하면 rc_db로 변경 가능)
-    private static final String DB_URL      = "jdbc:mariadb://pyeonhang-db.cjg402amekn6.ap-southeast-2.rds.amazonaws.com/pyeonhang?useUnicode=true&characterEncoding=utf8";
-    private static final String DB_USER     = "root";
-    private static final String DB_PASSWORD = "goqlsgoqls1";
+    // private static final String DB_URL      = "jdbc:mariadb://pyeonhang-db.cjg402amekn6.ap-southeast-2.rds.amazonaws.com/pyeonhang?useUnicode=true&characterEncoding=utf8";
+    // private static final String DB_USER     = "root";
+    // private static final String DB_PASSWORD = "goqlsgoqls1";
+
+    @Value("${spring.datasource.url}")
+    private String DB_URL;
+
+    @Value("${spring.datasource.username}")
+    private String DB_USER;
+
+    @Value("${spring.datasource.password}")
+    private String DB_PASSWORD;
 
     private static final String BASE_URL    = "https://www.7-eleven.co.kr";
 
@@ -97,7 +107,7 @@ public class SEVCrwaler {
         options.addArguments("--lang=ko-KR");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
-        // options.addArguments("--headless=new");
+        options.addArguments("--headless=new");
 
         WebDriver driver = new ChromeDriver(options);
 

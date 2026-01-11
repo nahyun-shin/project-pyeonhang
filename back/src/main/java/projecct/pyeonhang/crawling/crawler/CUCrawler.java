@@ -3,6 +3,7 @@ package projecct.pyeonhang.crawling.crawler;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -21,9 +22,19 @@ public class CUCrawler {
     private static final String WEB_DRIVER_ID   = "webdriver.chrome.driver";
     private static final String WEB_DRIVER_PATH = "C:/chromedriver-win64/chromedriver.exe";
 
-    private static final String DB_URL      = "jdbc:mariadb://pyeonhang-db.cjg402amekn6.ap-southeast-2.rds.amazonaws.com/pyeonhang?useUnicode=true&characterEncoding=utf8";
-    private static final String DB_USER     = "root";
-    private static final String DB_PASSWORD = "goqlsgoqls1";
+    // private static final String DB_URL      = "jdbc:mariadb://pyeonhang-db.cjg402amekn6.ap-southeast-2.rds.amazonaws.com/pyeonhang?useUnicode=true&characterEncoding=utf8";
+    // private static final String DB_USER     = "root";
+    // private static final String DB_PASSWORD = "goqlsgoqls1";
+
+    // yml의 설정을 그대로 읽어옵니다.
+    @Value("${spring.datasource.url}")
+    private String DB_URL;
+
+    @Value("${spring.datasource.username}")
+    private String DB_USER;
+
+    @Value("${spring.datasource.password}")
+    private String DB_PASSWORD;
 
     // ========= 분류용 키워드 / 패턴 =========
     private static final String[] LIFE_KEYWORDS = {
@@ -87,7 +98,7 @@ public class CUCrawler {
             Pattern.compile(".*\\b\\d+(?:\\.\\d+)?\\s?(?:ml|mL|ML|l|L)\\b.*");
 
     public void crawlMonthlyEvents() {
-
+        System.out.println("크롤링 메서드 진입 성공"); // 이게 찍히는지 확인
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
         ChromeOptions options = new ChromeOptions();
@@ -95,7 +106,7 @@ public class CUCrawler {
         options.addArguments("--lang=ko-KR");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
-        // options.addArguments("--headless=new"); // 서버/배치 시 활성화 가능
+        options.addArguments("--headless=new"); // 서버/배치 시 활성화 가능
 
         WebDriver driver = new ChromeDriver(options);
 
@@ -105,6 +116,7 @@ public class CUCrawler {
             String url = "https://cu.bgfretail.com/event/plus.do?category=event&depth2=1&sf=N";
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
             driver.get(url);
+            System.out.println("페이지 접속 완료: " + driver.getTitle());
             Thread.sleep(1500);
 
             // 2) "더보기" 반복 클릭 → 전체 상품 DOM에 로드

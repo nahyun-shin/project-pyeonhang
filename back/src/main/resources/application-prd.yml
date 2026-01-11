@@ -1,6 +1,6 @@
 #서버 포트 설정
 server:
-  host : https://pyeonhang.world/  #나중에 AWS도메인으로변경
+  host : http://nahyun.site/  #나중에 AWS도메인으로변경
   servlet:
     encoding:
       charset: 'UTF-8'
@@ -11,9 +11,9 @@ server:
   port: 9090 #나중에 AWS포트로변경
   file:
     upload:
-      path: C:\\files\\upload\\board\\
+      path: /home/shin/files/upload/board/
     coupon:
-      path: C:\\files\\upload\\coupon\\
+      path: /home/shin/files/upload/coupon/
 
 
 spring:
@@ -46,9 +46,9 @@ spring:
   #Database 설정
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url : jdbc:mariadb://pyeonhang-db.cjg402amekn6.ap-southeast-2.rds.amazonaws.com/pyeonhang
+    url : jdbc:mariadb://aws-portpolio-db.cpk6yi0usehb.ap-southeast-2.rds.amazonaws.com/portpolio
     username: root
-    password: goqlsgoqls1
+    password: hyun9609
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       connection-timeout: 60000
