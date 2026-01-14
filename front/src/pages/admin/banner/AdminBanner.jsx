@@ -108,7 +108,7 @@ function AdminBanner(props) {
       new Blob([JSON.stringify(rows)], { type: "application/json" })
     );
 
-    console.log(rows);
+    // console.log(rows);
 
     return formData;
   };

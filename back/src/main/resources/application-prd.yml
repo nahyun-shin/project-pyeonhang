@@ -1,6 +1,8 @@
 #서버 포트 설정
 server:
-  host : http://nahyun.site/  #나중에 AWS도메인으로변경
+  host : 
+    - https://nahyun.site  #나중에 AWS도메인으로변경
+    - https://www.nahyun.site
   servlet:
     encoding:
       charset: 'UTF-8'
@@ -9,7 +11,7 @@ server:
       force-request: true
       force-response: true
   port: 9090 #나중에 AWS포트로변경
-  file:
+  file: 
     upload:
       path: /home/shin/files/upload/board/
     coupon:

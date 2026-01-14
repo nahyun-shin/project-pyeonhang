@@ -40,7 +40,7 @@ function Login() {
     });
 
     const onSubmit = async (data) => {
-        console.log("폼 데이터:", data);        
+        // console.log("폼 데이터:", data);        
         await loginMutation.mutateAsync(data);
         reset();
     };

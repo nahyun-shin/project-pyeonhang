@@ -161,8 +161,12 @@ public class SecurityConfig {
         config.setAllowedMethods(List.of("GET",  "POST", "DELETE", "PUT", "PATCH",  "OPTIONS"));
         config.setAllowedOrigins(List.of("http://localhost:3000",
                 "http://localhost:3001",
-                "http://localhost:4000", "https://pyeonhang.world",
-                "http://localhost:4001"));
+                "http://localhost:4000",
+                "http://localhost:4001",
+                "http://localhost:4002",
+                "https://nahyun.site",
+                "https://www.nahyun.site"
+            ));
         config.setAllowCredentials(true);
         config.setMaxAge(3600L);
 

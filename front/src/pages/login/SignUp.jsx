@@ -71,6 +71,7 @@ function SignUp(props) {
                 <section className={styles.user_loginp_wrap}>
                     {signUpFields.map((field)=>(
                         <InputForm
+                        id={field.name}
                         key={field.name}
                         {...field}
                         register={register}

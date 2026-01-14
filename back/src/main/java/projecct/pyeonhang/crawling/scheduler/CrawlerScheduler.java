@@ -20,9 +20,9 @@ public class CrawlerScheduler implements CommandLineRunner{
         // 배포 전 로컬에서 딱 한 번 실행하고 싶을 때만 아래 주석을 풉니다.
         // 실행 후 데이터가 들어오면 다시 주석처리하고 배포하면 됩니다.
         
-        crawlerSchedulerService.crawlAllConvenienceStoresMonthly(); 
+        // crawlerSchedulerService.crawlAllConvenienceStoresMonthly(); 
         
-        System.out.println("[시스템] 서버 시작됨 - 스케줄러 대기 중");
+        // System.out.println("[시스템] 서버 시작됨 - 스케줄러 대기 중");
     }
 
     // [방아쇠 2] 매월 1일 새벽 3시 실행 (유지보수용 자동화)

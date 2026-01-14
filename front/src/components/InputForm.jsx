@@ -3,7 +3,7 @@ import styles from '@/pages/login/login.module.css';
 
 function InputForm({
   label,
-  id='',
+  id,
   type = "text",
   placeholder,
   register,
