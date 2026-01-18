@@ -42,7 +42,7 @@ function Header(props) {
                         {/* 관리자가 아니거나, 관리자 페이지가 아닐 떄 노출 */}
                         {(!isAdmin || !isAdminPage) && (
                             <ul className={styles.l_menu_list}>
-                                <li><NavLink to="/product/ALL" className={({isActive}) => isActive? styles.active:""}>전체상품</NavLink></li>
+                                <li className={styles.hide_tablet}><NavLink to="/product/ALL" className={({isActive}) => isActive? styles.active:""}>전체상품</NavLink></li>
                                 <li><NavLink to="/product/CU" className={({isActive}) => isActive? styles.active:""}>CU</NavLink></li>
                                 <li><NavLink to="/product/GS25" className={({isActive}) => isActive? styles.active:""}>GS25</NavLink></li>
                                 <li><NavLink to="/product/SEV" className={({isActive}) => isActive? styles.active:""}>7ELEVEN</NavLink></li>

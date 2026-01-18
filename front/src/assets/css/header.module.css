@@ -16,9 +16,10 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    width: 1128px;
+    max-width: 1200px;
     height: 100%;
     padding: 0;
+    background-color: #FFD600;
 }
 
 .l_menu_list a:hover::before,
@@ -86,4 +87,15 @@
 
 .logo{
     width: 100px;
+}
+
+@media (max-width: 1024px){
+    .header_nav{
+        background-color:aquamarine;
+        max-width: 100%;
+    }
+    .hide_tablet{
+        display: none;
+    }
+
 }
