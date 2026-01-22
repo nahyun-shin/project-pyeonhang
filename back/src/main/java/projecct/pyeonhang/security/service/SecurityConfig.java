@@ -97,6 +97,10 @@ public class SecurityConfig {
                                         .requestMatchers("/user/logout/**").permitAll()
                                         .requestMatchers("/user/add").permitAll()
                                         .requestMatchers("/api/v1/refresh").permitAll()
+                                        //스웨거 화면
+                                        .requestMatchers("/swagger-ui/**").permitAll()
+                                        //스웨거 문서
+                                        .requestMatchers("/v3/api-docs/**").permitAll()
                                         .requestMatchers("/api/v1/email/**").permitAll()
                                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                                         .requestMatchers("/.well-known/**").permitAll()

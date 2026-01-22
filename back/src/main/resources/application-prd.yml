@@ -53,10 +53,10 @@ spring:
     password: hyun9609
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
-      connection-timeout: 60000
-      maximum-pool-size: 50
-      minimum-idle: 20
-      idle-timeout: 10000
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      minimum-idle: 10
+      idle-timeout: 600000
       data-source-properties:
         cachePrepStmts : true #캐쉬 설정 on 
         prepStmtCacheSize : 250 #문서 할당 수

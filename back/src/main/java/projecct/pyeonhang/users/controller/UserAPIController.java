@@ -113,29 +113,41 @@ public class UserAPIController {
     }
 
     //(로그인 기준)비밀번호 수정
+    // @PutMapping("/user/password/change")
+    // public ResponseEntity<ApiResponse<Object>> changePassword(
+    //         @AuthenticationPrincipal(expression = "username") String principalUserId,
+    //         @Valid @RequestBody UserPasswordResetRequest request
+    // ) {
+    //     if (principalUserId == null) {
+    //         return ResponseEntity
+    //                 .status(HttpStatus.UNAUTHORIZED)
+    //                 .body(ApiResponse.fail(HttpStatus.UNAUTHORIZED.value(), "인증되지 않음"));
+    //     }
+    //     try {
+    //         userService.changeMyPassword(principalUserId, request);
+    //         return ResponseEntity.ok(ApiResponse.ok("비밀번호 변경 완료"));
+    //     } catch (IllegalArgumentException e) {
+    //             log.info("비밀번호 변경 실패(입력오류): {}", e.getMessage());
+    //             return ResponseEntity
+    //                     .status(HttpStatus.BAD_REQUEST)
+    //                     .body(ApiResponse.fail(HttpStatus.BAD_REQUEST.value(), e.getMessage()));
+    //     }catch (Exception e) {
+    //         log.info("비밀번호 변경 실패: {}", e.getMessage(), e);
+    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ApiResponse.fail("비밀번호 변경 실패"));
+    //     }
+
+    // }
     @PutMapping("/user/password/change")
     public ResponseEntity<ApiResponse<Object>> changePassword(
             @AuthenticationPrincipal(expression = "username") String principalUserId,
-            @Valid @ModelAttribute UserPasswordResetRequest request
+            @Valid @RequestBody UserPasswordResetRequest request // @RequestBody로 변경 확인!
     ) {
-        if (principalUserId == null) {
-            return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.fail(HttpStatus.UNAUTHORIZED.value(), "인증되지 않음"));
-        }
-        try {
-            userService.changeMyPassword(principalUserId, request);
-            return ResponseEntity.ok(ApiResponse.ok("비밀번호 변경 완료"));
-        } catch (IllegalArgumentException e) {
-                log.info("비밀번호 변경 실패(입력오류): {}", e.getMessage());
-                return ResponseEntity
-                        .status(HttpStatus.BAD_REQUEST)
-                        .body(ApiResponse.fail(HttpStatus.BAD_REQUEST.value(), e.getMessage()));
-        }catch (Exception e) {
-            log.info("비밀번호 변경 실패: {}", e.getMessage(), e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ApiResponse.fail("비밀번호 변경 실패"));
-        }
-
+        // 1. 서비스 호출: 비밀번호 비교/변경 로직은 모두 이 안에 있어야 합니다.
+        // 만약 서비스 내부에서 실패하면 throw new IllegalArgumentException("...")을 던지게 하세요.
+        userService.changeMyPassword(principalUserId, request);
+        
+        // 2. 결과 응답: 여기까지 왔다는 건 '성공'했다는 뜻입니다.
+        return ResponseEntity.ok(ApiResponse.ok("비밀번호 변경 완료"));
     }
 
 
